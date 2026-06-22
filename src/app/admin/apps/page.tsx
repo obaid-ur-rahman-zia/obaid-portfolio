@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CrmPanel } from "@/components/admin/crm/CrmPanel";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
+import { ScreenshotUploadList } from "@/components/admin/ScreenshotUploadList";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -102,11 +104,22 @@ export default function AdminAppsPage() {
                   onChange={(e) => setEditing({ ...editing, category: e.target.value })}
                 />
               </div>
-              <div className="space-y-2">
-                <Label>Icon URL</Label>
-                <Input value={editing.icon || ""} onChange={(e) => setEditing({ ...editing, icon: e.target.value })} />
+              <div className="space-y-2 sm:col-span-2">
+                <ImageUploadField
+                  label="Project icon"
+                  value={editing.icon || ""}
+                  onChange={(icon) => setEditing({ ...editing, icon })}
+                  folder="projects"
+                  aspect={1}
+                  hint="Square icon shown in project cards."
+                />
               </div>
             </div>
+            <ScreenshotUploadList
+              values={Array.isArray(editing.screenshots) ? editing.screenshots : []}
+              onChange={(screenshots) => setEditing({ ...editing, screenshots })}
+              folder="screenshots"
+            />
             <div className="space-y-2">
               <Label>Short description</Label>
               <Input

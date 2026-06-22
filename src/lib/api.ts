@@ -57,6 +57,8 @@ export const adminGetPlans = () => api.get<Plan[]>("/admin/plans").then((r) => r
 export const adminUpdatePlan = (id: string, data: Partial<Plan>) =>
   api.put<Plan>(`/admin/plans/${id}`, data).then((r) => r.data);
 export const adminGetTeam = () => api.get<TeamMember[]>("/admin/team").then((r) => r.data);
+export const adminUpdateTeam = (id: string, data: Partial<TeamMember>) =>
+  api.put<TeamMember>(`/admin/team/${id}`, data).then((r) => r.data);
 export const adminGetProfile = () => api.get<Profile>("/admin/profile").then((r) => r.data);
 export const adminUpdateProfile = (data: Partial<Profile>) =>
   api.put<Profile>("/admin/profile", data).then((r) => r.data);

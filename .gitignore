@@ -58,4 +58,5 @@ next-env.d.ts
 *.ntvs*
 *.njsproj
 *.sln
-Thumbs.db
+# user uploads (local fallback)
+/public/uploads/
